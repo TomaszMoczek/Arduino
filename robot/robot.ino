@@ -36,17 +36,9 @@ void loop() {
   Serial.print(odleglosc);
   Serial.print(" cm");
   Serial.println();
-  delay (20);
-  
-  digitalWrite(input1A, HIGH);
-  digitalWrite(input2A, LOW);
-  analogWrite(enablePin1, 255);
-  
-  digitalWrite(input1B, HIGH);
-  digitalWrite(input2B, LOW);
-  analogWrite(enablePin2, 255);
-  
-  if (odleglosc > 40 ) {
+  delay(20);
+
+  if (odleglosc > 30) {
     digitalWrite(input1A, HIGH);
     digitalWrite(input2A, LOW);
     analogWrite(enablePin1, 255);
@@ -56,9 +48,6 @@ void loop() {
     analogWrite(enablePin2, 255);
   }
   else {
-    digitalWrite(enablePin1, LOW);
-    delay(500);
-    
     digitalWrite(input1A, LOW);
     digitalWrite(input2A, HIGH);
     analogWrite(enablePin1, 255);

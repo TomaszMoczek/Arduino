@@ -31,7 +31,7 @@ void loop() {
   digitalWrite(trig, HIGH);
   delayMicroseconds(1000);
   digitalWrite(trig, LOW);
-  czas = pulseIn(echo, HIGH);
+  czas = pulseIn(echo, HIGH, 500000);
   odleglosc = (czas / 2) / 29.1;
   Serial.print(odleglosc);
   Serial.print(" cm");

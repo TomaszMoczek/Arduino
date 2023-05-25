@@ -11,6 +11,8 @@ int enablePin2 = 6;
 int input1B = 4;
 int input2B = 5;
 
+int ledpin = 2;
+
 void setup() {
   pinMode(trig, OUTPUT);
   pinMode(echo, INPUT);
@@ -25,6 +27,9 @@ void setup() {
   pinMode(input1B, OUTPUT);
   pinMode(input2B, OUTPUT);
   digitalWrite(enablePin2, LOW);
+
+  pinMode(ledpin, OUTPUT);
+  digitalWrite(ledpin, LOW);
 }
 
 void loop() {
@@ -46,8 +51,7 @@ void loop() {
     digitalWrite(input1B, HIGH);
     digitalWrite(input2B, LOW);
     analogWrite(enablePin2, 255);
-  }
-  else {
+  } else {
     digitalWrite(input1A, LOW);
     digitalWrite(input2A, HIGH);
     analogWrite(enablePin1, 255);
@@ -55,5 +59,14 @@ void loop() {
     digitalWrite(input1B, HIGH);
     digitalWrite(input2B, LOW);
     analogWrite(enablePin2, 255);
+  }
+
+  int odczyt = analogRead(A0);
+  float swiatlo = map(odczyt, 0, 1023, 0, 100);
+
+  if (swiatlo < 40) {
+    digitalWrite(ledpin, HIGH);
+  } else {
+    digitalWrite(ledpin, LOW);
   }
 }
